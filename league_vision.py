@@ -20,36 +20,6 @@ import torch.nn.functional as F
 cuda = torch.device('cuda:0')
 # League computer vision
 
-# Probably regression based? Could output coordinates on league map (?) Could potentially also use classification, but would need classes for many many areas of the map.
-#### PERHAPS SEMANTIC SEGMENTATION???
-
-
-
-# Basic CNN Example:
-# Convolutional layer 1 (ex 32 neurons, ReLU activation)
-# Pooling Layer 1
-# Convolutional Layer 2 (ex 64 neurons, ReLU activation)
-# Pooling layer 2
-##### Above here is somewhat diverse/able to be applied to many different problems. Used to identify/extract features, below this is specifically for classification using those features
-# Flatten layers (keras.layers.Flatten())
-# Dense layer 1 (ex 1024 neurons, ReLU activation)
-# Dense layer 2 (ex 10 neurons, softmax activation) <--- Output layer, with 10 possible classification outputs
-
-# Input Data:
-# 1. Could just use the DeepLeague dataset
-# 2. Could create a dataset of images where each champion icon is overlayed on the minimap at many possible positions, with the same number of images per champ
-
-
-# Issues with DeepLeague?
-# # Model is trained on where champs have existed previously on the map of an LCS game, this means it wont generalize well. Not only is the occurence of champs in the dataset going to be imbalanced but also where they appear
-
-# Steps to implement a YOLO-like champ detector for league minimap
-# 1. Create dataset. Overlay league champ icons (with roughly equal proportions for each champ) onto the minimap in different positions. Include bounding box information (?) and which champ it is as part of this data. These boundary boxes should have confidence score and class probabilities of 1 as "ground truth"
-# 2. Perhaps implement a yolo-like loss function
-# 3. Implement model/network architecture. Multiple convolutional layers and maxpool, separated by 1x1 "downscaling" convolutional layers and 3x3 conv. layers, concluding with 2 fully connected layers
-
-#### Can perhaps use an Ultralytics YOLO model, either for final implementation or to later flesh out
-
 
 # Takes lists of coordinates (should be between 433x433) and lists of champs, then overlays them onto a 1440p sized league minimap in one image. 
 t = 0
